@@ -2,6 +2,8 @@ import { Header } from './Header/index.js';
 import { Intro } from './Intro/index.js';
 import { Pose } from './Pose/index.js';
 
+const appElm = document.querySelector('#app');
+
 const header = [
     {
         title: 'Jogíni',
@@ -9,13 +11,18 @@ const header = [
     }
 ]
 
+// const renderHeader = (items) => {
+//     appElm.innerHTML = items
+//         .map(oneHeader => Header(oneHeader))
+//         .join('');
+// }
+
 const renderHeader = (items) => {
-
-    const appElm = document.querySelector('#app');
-
-    appElm.innerHTML = items
-        .map(oneHeader => Header(oneHeader))
-        .join('');
+    appElm.innerHTML = Header({
+        title: items[0].title,
+        links: items[0].links,
+    })
+    console.log(items);
 }
 
 renderHeader(header);
@@ -31,13 +38,19 @@ const intro = [
     }
 ]
 
+// const renderIntro = (items) => {
+//     appElm.innerHTML += items
+//         .map(oneIntro => Intro(oneIntro))
+//         .join('');
+// }
+
 const renderIntro = (items) => {
-
-    const appElm = document.querySelector('#app');
-
-    appElm.innerHTML += items
-        .map(oneIntro => Intro(oneIntro))
-        .join('');
+    appElm.innerHTML += Intro({
+        heading: items[0].heading,
+        text: items[0].text,
+    })
+    console.log(items);
+    console.log(items[0].heading);
 }
 
 renderIntro(intro);
@@ -48,13 +61,17 @@ const pose = [
     }
 ]
 
+// const renderPose = (items) => {
+//     appElm.innerHTML += items
+//         .map(onePose => Pose(onePose))
+//         .join('');
+// }
+
 const renderPose = (items) => {
-
-    const appElm = document.querySelector('#app');
-
-    appElm.innerHTML += items
-        .map(onePose => Pose(onePose))
-        .join('');
+    appElm.innerHTML += Pose({
+        src: items[0].src,
+    })
+    console.log(items[0].src);
 }
 
 renderPose(pose);
